@@ -1,6 +1,8 @@
 "use client";
 import Navbar from "@/components/navbar";
+import About from "@/components/section/about";
 import TopMoverComponent from "@/components/section/top-mover";
+import WhyCrypto from "@/components/section/why-crypto";
 import TopMoverCard from "@/components/top-mover-card";
 import { getTrades, useGetTrade } from "@/services/trade";
 import { getWallets, useGetWallet } from "@/services/wallet";
@@ -26,10 +28,10 @@ export default function Home() {
           icon: wallet?.logo || "",
         };
       })
-      .slice(0, 5) || [];
+      .slice(0, 6) || [];
 
   return (
-    <main className="space-y-8">
+    <main className="space-y-8 pb-8">
       <Navbar />
       <div className="container flex flex-col gap-8">
         <h1 className="font-bold text-3xl">
@@ -40,6 +42,8 @@ export default function Home() {
           <p className="text-xl font-semibold">🔥 Top Movers (24 Jam)</p>
           <TopMoverComponent data={topMovers} />
         </div>
+        <About />
+        <WhyCrypto />
       </div>
     </main>
   );
