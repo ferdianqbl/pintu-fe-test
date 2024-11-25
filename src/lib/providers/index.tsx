@@ -26,7 +26,6 @@ function makeQueryClient(): QueryClient {
         staleTime: 60 * 1000,
         refetchOnWindowFocus: true,
         gcTime: 2 * 1000,
-        refetchInterval: 10000,
       },
       dehydrate: {
         shouldDehydrateQuery: (query) => query.state.status === "pending",

@@ -40,12 +40,23 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ## 🚀Features🚀
 
 > Top Movers (6 Data).
+
 > All Crypto List.
+
 > Sorting Table by price, day, week, month, and year.
+
 > Static information about crypto.
 
 ## ⚡Working Constraints⚡
 
 > The provided api cannot be used with client side methods so it must use server side.
+
 > When trying to use the API using client side methods, CORS-related errors appear.
+
+> CORS Error in Local
+> ![Cors Error in Local](./public/readme/cors-local.png)
+
+> CORS Error in Production
+> ![Cors Error in Production](./public/readme/cors-prod.png)
+
 > To find out the latest data, you must refresh the page.
