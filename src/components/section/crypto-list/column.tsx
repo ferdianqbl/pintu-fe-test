@@ -1,11 +1,9 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { FormatToRp } from "@/lib/utils";
 import { ColumnDef } from "@tanstack/react-table";
 import {
   ChevronDownIcon,
-  ChevronsUpDown,
   ChevronsUpDownIcon,
   ChevronUpIcon,
 } from "lucide-react";
