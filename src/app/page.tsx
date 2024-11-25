@@ -1,6 +1,7 @@
 "use client";
 import Navbar from "@/components/navbar";
 import About from "@/components/section/about";
+import CryptoList from "@/components/section/crypto-list";
 import TopMoverComponent from "@/components/section/top-mover";
 import WhyCrypto from "@/components/section/why-crypto";
 import TopMoverCard from "@/components/top-mover-card";
@@ -20,10 +21,8 @@ export default function Home() {
           baseCurrency.toLocaleLowerCase()
       );
       return {
-        name: wallet?.name || "",
-        latestPrice: trade.latestPrice,
-        day: trade.day,
-        icon: wallet?.logo || "",
+        ...trade,
+        ...wallet,
       };
     }) || [];
 
@@ -40,9 +39,28 @@ export default function Home() {
           <TopMoverComponent
             data={data
               .sort((a, b) => parseFloat(b.day) - parseFloat(a.day))
-              .slice(0, 6)}
+              .slice(0, 6)
+              .map((trade) => ({
+                name: trade?.name || "",
+                latestPrice: trade.latestPrice,
+                day: trade.day,
+                icon: trade?.logo || "",
+              }))}
           />
         </div>
+        <CryptoList
+          data={data.map((item) => ({
+            id: item.currency_id || 0,
+            icon: item?.logo || "",
+            symbol: item.currencyGroup || "",
+            name: item.name || "",
+            amount: item.latestPrice,
+            day: item.day,
+            week: item.week,
+            month: item.month,
+            year: item.year,
+          }))}
+        />
         <About />
         <WhyCrypto />
       </div>
