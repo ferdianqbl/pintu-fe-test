@@ -17,7 +17,7 @@ export const getWallets = async (): Promise<WalletResponses> => {
     );
     return data;
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     return {
       code: "error",
       message: "Failed to fetch data",

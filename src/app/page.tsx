@@ -11,24 +11,21 @@ export default function Home() {
   const { data: wallets } = useGetWallet();
   const { data: trades } = useGetTrade();
 
-  const topMovers =
-    trades?.payload
-      .sort((a, b) => parseFloat(b.day) - parseFloat(a.day))
-      .map((trade) => {
-        const baseCurrency = trade.pair.split("/")[0];
-        const wallet = wallets?.payload.find(
-          (wallet) =>
-            wallet.currencySymbol.toLocaleLowerCase() ===
-            baseCurrency.toLocaleLowerCase()
-        );
-        return {
-          name: wallet?.name || "",
-          latestPrice: trade.latestPrice,
-          day: trade.day,
-          icon: wallet?.logo || "",
-        };
-      })
-      .slice(0, 6) || [];
+  const data =
+    trades?.payload.map((trade) => {
+      const baseCurrency = trade.pair.split("/")[0];
+      const wallet = wallets?.payload.find(
+        (wallet) =>
+          wallet.currencyGroup.toLocaleLowerCase() ===
+          baseCurrency.toLocaleLowerCase()
+      );
+      return {
+        name: wallet?.name || "",
+        latestPrice: trade.latestPrice,
+        day: trade.day,
+        icon: wallet?.logo || "",
+      };
+    }) || [];
 
   return (
     <main className="space-y-8 pb-8">
@@ -40,7 +37,11 @@ export default function Home() {
 
         <div className="flex flex-col gap-4">
           <p className="text-xl font-semibold">🔥 Top Movers (24 Jam)</p>
-          <TopMoverComponent data={topMovers} />
+          <TopMoverComponent
+            data={data
+              .sort((a, b) => parseFloat(b.day) - parseFloat(a.day))
+              .slice(0, 6)}
+          />
         </div>
         <About />
         <WhyCrypto />

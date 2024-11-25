@@ -18,8 +18,11 @@ const TopMoverComponent = ({
   return (
     <Carousel>
       <CarouselContent>
-        {data.map((mover) => (
-          <CarouselItem className="basis-1/3 md:basis-1/4 lg:basis-1/6">
+        {data.map((mover, index) => (
+          <CarouselItem
+            className="basis-1/3 md:basis-1/4 lg:basis-1/6"
+            key={mover.name + index}
+          >
             <TopMoverCard data={mover} key={mover.name} />
           </CarouselItem>
         ))}

@@ -14,7 +14,7 @@ export const getTrades = async (): Promise<TradeResponses> => {
     const { data } = await axiosLib.get<TradeResponses>(`/trade/price-changes`);
     return data;
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     return {
       code: "error",
       message: "Failed to fetch data",
