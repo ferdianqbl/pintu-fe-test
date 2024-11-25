@@ -30,6 +30,5 @@ export function useGetWallet(): UseQueryResult<WalletResponses> {
   return useQuery<WalletResponses>({
     queryKey: [getWalletKey],
     queryFn: () => getWallets(),
-    // refetchInterval: 10000,
   });
 }

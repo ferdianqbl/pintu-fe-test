@@ -7,8 +7,9 @@ import WhyCrypto from "@/components/section/why-crypto";
 import { getTrades, useGetTrade } from "@/services/trade";
 import { getWallets, useGetWallet } from "@/services/wallet";
 
-export default async function Home() {
-  const [wallets, trades] = await Promise.all([getWallets(), getTrades()]);
+export default function Home() {
+  const { data: wallets } = useGetWallet();
+  const { data: trades } = useGetTrade();
 
   const data =
     trades?.payload.map((trade) => {
