@@ -4,13 +4,11 @@ import About from "@/components/section/about";
 import CryptoList from "@/components/section/crypto-list";
 import TopMoverComponent from "@/components/section/top-mover";
 import WhyCrypto from "@/components/section/why-crypto";
-import TopMoverCard from "@/components/top-mover-card";
 import { getTrades, useGetTrade } from "@/services/trade";
 import { getWallets, useGetWallet } from "@/services/wallet";
 
-export default function Home() {
-  const { data: wallets } = useGetWallet();
-  const { data: trades } = useGetTrade();
+export default async function Home() {
+  const [wallets, trades] = await Promise.all([getWallets(), getTrades()]);
 
   const data =
     trades?.payload.map((trade) => {
