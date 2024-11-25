@@ -1,11 +1,10 @@
-"use client";
 import Navbar from "@/components/navbar";
 import About from "@/components/section/about";
 import CryptoList from "@/components/section/crypto-list";
 import TopMoverComponent from "@/components/section/top-mover";
 import WhyCrypto from "@/components/section/why-crypto";
-import { getTrades, useGetTrade } from "@/services/trade";
-import { getWallets, useGetWallet } from "@/services/wallet";
+import { getTrades } from "@/services/trade";
+import { getWallets } from "@/services/wallet";
 
 export default async function Home() {
   const [wallets, trades] = await Promise.all([getWallets(), getTrades()]);
