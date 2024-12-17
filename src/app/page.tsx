@@ -7,7 +7,7 @@ import { getTrades } from "@/services/trade";
 import { getWallets } from "@/services/wallet";
 
 export const dynamic = "force-dynamic";
-export const revalidate = 0;
+export const revalidate = 1;
 
 export default async function Home() {
   const [wallets, trades] = await Promise.all([getWallets(), getTrades()]);
